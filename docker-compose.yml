@@ -48,3 +48,14 @@ services:
 #        - action: rebuild
 #          path: ./frontend
 
+## TODO: Add certbot
+#
+#  certbot:
+#    image: certbot/dns-cloudflare
+#    volumes:
+#     - ./.certbot/conf:/etc/letsencrypt
+#     - ./.certbot/logs:/var/log/letsencrypt
+#     - ./cloudflare.ini:/cloudflare.ini:ro
+#    environment:
+#     - CF_API_EMAIL=${CF_API_EMAIL}
+#     - CF_API_KEY=${CF_API_KEY}
