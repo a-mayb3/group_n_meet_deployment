@@ -4,6 +4,7 @@
 services:
   postgres:
     image: postgres:alpine
+    restart: unless-stopped
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -17,6 +18,7 @@ services:
     build:
       context: ./backend
       dockerfile: dockerfile
+    restart: unless-stopped
     ports:
       - "0.0.0.0:8000:8000"
     environment:
@@ -36,6 +38,7 @@ services:
 ## TODO: Add flutter frontend
 #
 #  flutter:
+#    restart: unless-stopped
 #    build:
 #      context: ./frontend
 #      dockerfile: dockerfile
@@ -52,10 +55,13 @@ services:
 #
 #  certbot:
 #    image: certbot/dns-cloudflare
+#    restart: unless-stopped
 #    volumes:
 #     - ./.certbot/conf:/etc/letsencrypt
 #     - ./.certbot/logs:/var/log/letsencrypt
 #     - ./cloudflare.ini:/cloudflare.ini:ro
+#     - /var/run/docker.sock:/var/run/docker.sock
 #    environment:
 #     - CF_API_EMAIL=${CF_API_EMAIL}
 #     - CF_API_KEY=${CF_API_KEY}
+#     
