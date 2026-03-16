@@ -3,5 +3,6 @@
 cloudflare.ini
 .env
 .certbot/
+.postgresql/
 
 *.log
