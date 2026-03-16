@@ -1,0 +1,50 @@
+## docker-compose.yml
+## author: Borgia Leiva (@a-mayb3) <edoardo.borgia.leiva@outlook.com>
+
+services:
+  postgres:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=group_n_meet
+    ports:
+      - "0.0.0.0:5432:5432"
+    volumes:
+      - ./.postgresql/.postgres-data:/var/lib/postgresql/:rw
+
+  fastapi:
+    build:
+      context: ./backend
+      dockerfile: dockerfile
+    ports:
+      - "0.0.0.0:8000:8000"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=group_n_meet
+      - SESSION_SECRET_KEY=${SESSION_SECRET_KEY}
+      - BIND_ADDRESS=0.0.0.0
+    depends_on:
+      - postgres
+    develop:
+      watch:
+        - action: rebuild
+          path: ./backend
+
+## TODO: Add reverse proxy
+## TODO: Add flutter frontend
+#
+#  flutter:
+#    build:
+#      context: ./frontend
+#      dockerfile: dockerfile
+#    ports:
+#      - "0.0.0.0:3000:3000"
+#    depends_on:
+#      - fastapi
+#    develop:
+#      watch:
+#        - action: rebuild
+#          path: ./frontend
+
