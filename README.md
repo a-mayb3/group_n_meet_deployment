@@ -8,8 +8,9 @@ This project and its submodules and components are distributed publicly under th
 This project is meant to be run on Linux but can be run under other OS with Docker support (like MSWin or MACOS).
 ### On Linux/*nix:
 #### Requirements
-- git / GitHub CLI / GitHub Desktop 
+- git / GitHub CLI / GitHub Desktop
 - docker / docker engine / docker desktop
+- docker compose / docker-compose
 #### Steps
 1. Clone the repo
 ```bash
