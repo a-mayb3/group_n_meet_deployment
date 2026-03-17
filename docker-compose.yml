@@ -30,15 +30,15 @@ services:
         - action: rebuild
           path: ./backend
 
-    nginx:
-      image: nginx:alpine
-      ports:
-        - "0.0.0.0:443:443"
-        - "0.0.0.0:80:80"
-      depends_on:
-        - fastapi
-      volumes:
-        - /etc/letsencrypt/:/etc/letsencrypt:ro ## read-only SSL/TLS certificates
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "0.0.0.0:443:443"
+      - "0.0.0.0:80:80"
+    depends_on:
+      - fastapi
+    volumes:
+      - /etc/letsencrypt/:/etc/letsencrypt:ro ## read-only SSL/TLS certificates
 
 ## TODO: Add reverse proxy
 ## TODO: Add flutter frontend
