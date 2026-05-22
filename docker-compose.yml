@@ -15,7 +15,7 @@ services:
   fastapi:
     build:
       context: ./backend
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       - POSTGRES_USER=postgres
