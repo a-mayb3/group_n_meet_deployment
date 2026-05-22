@@ -30,44 +30,26 @@ services:
         - action: rebuild
           path: ./backend
 
+  frontend:
+    build:
+      context: ./angular
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - fastapi
+    expose:
+      - "80"
+    develop:
+      watch:
+        - action: rebuild
+          path: ./angular
+
   nginx:
     image: nginx:alpine
     ports:
-      - "0.0.0.0:443:443"
       - "0.0.0.0:80:80"
     depends_on:
+      - frontend
       - fastapi
     volumes:
-      - /etc/letsencrypt/:/etc/letsencrypt:ro ## read-only SSL/TLS certificates
-
-## TODO: Add reverse proxy
-## TODO: Add flutter frontend
-#
-#  flutter:
-#    restart: unless-stopped
-#    build:
-#      context: ./frontend
-#      dockerfile: dockerfile
-#    ports:
-#      - "0.0.0.0:3000:3000"
-#    depends_on:
-#      - fastapi
-#    develop:
-#      watch:
-#        - action: rebuild
-#          path: ./frontend
-
-## TODO: Add certbot
-#
-#  certbot:
-#    image: certbot/dns-cloudflare
-#    restart: unless-stopped
-#    volumes:
-#     - ./.certbot/conf:/etc/letsencrypt
-#     - ./.certbot/logs:/var/log/letsencrypt
-#     - ./cloudflare.ini:/cloudflare.ini:ro
-#     - /var/run/docker.sock:/var/run/docker.sock
-#    environment:
-#     - CF_API_EMAIL=${CF_API_EMAIL}
-#     - CF_API_KEY=${CF_API_KEY}
-#     
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro

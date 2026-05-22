@@ -1,6 +1,8 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/a-mayb3/group_n_meet_backend
+	branch = devel-backend
 [submodule "angular"]
 	path = angular
 	url = git@github.com:a-mayb3/group_n_meet_angular
+	branch = devel
