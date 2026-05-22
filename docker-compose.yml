@@ -23,6 +23,7 @@ services:
       - POSTGRES_DB=group_n_meet
       - SESSION_SECRET_KEY=${SESSION_SECRET_KEY}
       - BIND_ADDRESS=0.0.0.0
+      - ROOT_PATH=/api
     depends_on:
       - postgres
     develop:
@@ -53,7 +54,3 @@ services:
         condition: service_healthy
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-    develop:
-      watch:
-        - action: rebuild
-          path: ./nginx
