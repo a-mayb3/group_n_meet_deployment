@@ -1,8 +1,8 @@
 # group_n_meet
 This project and its submodules and components are distributed publicly under the AGPLv3.
-- [a-mayb3/group_n_meet_deployment (this repository)](https://github.com/a-mayb3/group_n_meet_backend)
+- [a-mayb3/group_n_meet_deployment (this repository)](https://github.com/a-mayb3/group_n_meet_deployment)
 - [a-mayb3/group_n_meet_backend](https://github.com/a-mayb3/group_n_meet_backend)
-- [a-mayb3/group_n_meet_flutter (to be developed and released still)]()
+- [a-mayb3/group_n_meet_angular (to be developed and released still)](https://github.com/a-mayb3/group_n_meet_angular)
 > [!IMPORTANT]
 > These repositories will eventually be migrated on https://git.vollex.cc/.
 > Everything else left here will be marked as a Public Archive.
@@ -29,7 +29,6 @@ cd group_n_meet
 ```bash
 git submodule update --init --recursive
 ```
-
 ##### 3. Run
 ```bash
 docker compose up -d # or docker-compose up -d
