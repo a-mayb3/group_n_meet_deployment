@@ -24,6 +24,8 @@ services:
       - SESSION_SECRET_KEY=${SESSION_SECRET_KEY}
       - BIND_ADDRESS=0.0.0.0
       - ROOT_PATH=/api
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL}
     depends_on:
       - postgres
     develop:
