@@ -3,8 +3,9 @@ This project and its submodules and components are distributed publicly under th
 - [a-mayb3/group_n_meet_deployment (this repository)](https://github.com/a-mayb3/group_n_meet_backend)
 - [a-mayb3/group_n_meet_backend](https://github.com/a-mayb3/group_n_meet_backend)
 - [a-mayb3/group_n_meet_flutter (to be developed and released still)]()
-> [!NOTE]
-> These repositories will (eventually) also be available on https://git.vollex.cc/
+> [!IMPORTANT]
+> These repositories will eventually be migrated on https://git.vollex.cc/.
+> Everything else left here will be marked as a Public Archive.
 ## How to run
 > [!NOTE]
 > This project is meant to be run on Linux but can be run under other OS with Docker support (like MSWin or MACOS).
@@ -24,7 +25,6 @@ or using GitHub CLI
 gh repo clone a-mayb3/group_n_meet_deployment ./group_n_meet -- --depth=1
 cd group_n_meet
 ```
-
 ##### 2. Get the submodules
 ```bash
 git submodule update --init --recursive

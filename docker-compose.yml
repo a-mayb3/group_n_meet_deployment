@@ -35,8 +35,6 @@ services:
       context: ./angular
       dockerfile: Dockerfile
     restart: unless-stopped
-    depends_on:
-      - fastapi
     expose:
       - "80"
     develop:
@@ -49,7 +47,13 @@ services:
     ports:
       - "0.0.0.0:80:80"
     depends_on:
-      - frontend
-      - fastapi
+      frontend:
+        condition: service_started
+      fastapi:
+        condition: service_healthy
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    develop:
+      watch:
+        - action: rebuild
+          path: ./nginx
